@@ -54,6 +54,7 @@ public class Armor : MonoBehaviour
             Back.GetComponent<SpriteRenderer>().sprite = ExplorerBack.GetComponent<SpriteRenderer>().sprite;
             Left.GetComponent<SpriteRenderer>().sprite = ExplorerLeft.GetComponent<SpriteRenderer>().sprite;
             Right.GetComponent<SpriteRenderer>().sprite = ExplorerRight.GetComponent<SpriteRenderer>().sprite;
+            Variable.instance.isClothChanged = true;
         }
     }
 }

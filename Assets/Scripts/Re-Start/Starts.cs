@@ -1,25 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Starts : MonoBehaviour
 {
-    private static Starts Instance;
-
-    public static Starts instance
-    {
-        get
-        {
-            if (Instance == null)
-                Instance = new Starts();
-            return Instance;
-        }
-    }
     int playerSpeed = 5;
     GameObject Front;
     GameObject Back;
     GameObject Left;
     GameObject Right;
+    GameObject outsidE;
     [HideInInspector] public GameObject nowObj;
     GameObject[] CharacterList = new GameObject[4];
 
@@ -31,6 +21,8 @@ public class Starts : MonoBehaviour
         Back = GameObject.Find("Back");
         Left = GameObject.Find("Left");
         Right = GameObject.Find("Right");
+        outsidE = GameObject.Find("outsidE");
+        outsidE.SetActive(false);
         nowObj = Front;
         CharacterList[0] = Front;
         CharacterList[1] = Back;
@@ -73,6 +65,17 @@ public class Starts : MonoBehaviour
         Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos); //다시 월드 좌표로 변환한다.
         nowObj.transform.position = worldPos; //좌표를 적용한다.
 
+        if (viewPos.y == 1f)
+        {
+            if (Variable.instance.isClothChanged)
+            {
+                outsidE.SetActive(true);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneManager.LoadScene("SelectTown");
+                }
+            }
+        }
     }
 
     void ChangeCharacter(GameObject prevMainObj, GameObject mainObj)
