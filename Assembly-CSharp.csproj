@@ -54,10 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DefaultMovement.cs" />
-    <Compile Include="Assets\Scripts\Start\CameraMove.cs" />
-    <Compile Include="Assets\Scripts\Start\ArmourStand.cs" />
     <Compile Include="Assets\Scripts\Start\SceneChange.cs" />
-    <Compile Include="Assets\Scripts\Start\Character.cs" />
+    <Compile Include="Assets\Scripts\Start\Boundary.cs" />
+    <Compile Include="Assets\Scripts\Start\ArmourStand.cs" />
+    <Compile Include="Assets\Scripts\Start\DefaultSettings.cs" />
+    <Compile Include="Assets\Scripts\Re-Start\Starts.cs" />
+    <Compile Include="Assets\Scripts\Re-Start\Armor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

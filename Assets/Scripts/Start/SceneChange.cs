@@ -5,18 +5,15 @@ using UnityEngine;
 public class SceneChange : MonoBehaviour
 {
     GameObject[] childs;
-    GameObject queenFront;
-    GameObject queenBack;
-    GameObject queenRight;
-    GameObject queenLeft;
+    GameObject Front;
+    GameObject Back;
+    GameObject Left;
+    GameObject Right;
+
     // Start is called before the first frame update
     void Start()
     {
-        queenFront = GameObject.Find("QueenFront");
-        queenBack = GameObject.Find("QueenBack");
-        queenRight = GameObject.Find("QueenRight");
-        queenLeft = GameObject.Find("QueenLeft");
-        childs = new GameObject[4] { queenFront, queenBack, queenRight, queenLeft };
+        childs = new GameObject[4] { Front, Back, Left, Right };
     }
 
     // Update is called once per frame
@@ -29,10 +26,7 @@ public class SceneChange : MonoBehaviour
 
             if (pos.y > 1f)
             {
-                if (ArmourStand.instance.isClothChanged)
-                {
-
-                }
+                pos.y = 1f;
             }
 
 
