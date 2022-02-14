@@ -13,7 +13,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Eraser
   - Water
   - UI
   - 
@@ -52,6 +52,42 @@ TagManager:
   - name: Etc
     uniqueID: 36273579
     locked: 0
+  - name: milk4
+    uniqueID: 1658169727
+    locked: 0
+  - name: milk3
+    uniqueID: 2317821311
+    locked: 0
+  - name: milk2
+    uniqueID: 3322460447
+    locked: 0
+  - name: milk1
+    uniqueID: 3740424567
+    locked: 0
+  - name: word
+    uniqueID: 2988008305
+    locked: 0
   - name: Character
     uniqueID: 4174863867
+    locked: 0
+  - name: esc
+    uniqueID: 115586291
+    locked: 0
+  - name: q
+    uniqueID: 1593749579
+    locked: 0
+  - name: SemiSky
+    uniqueID: 1718293007
+    locked: 0
+  - name: NightSky
+    uniqueID: 645151961
+    locked: 0
+  - name: boonpil
+    uniqueID: 1361750879
+    locked: 0
+  - name: boonpilbackground
+    uniqueID: 3985427513
+    locked: 0
+  - name: canvas
+    uniqueID: 1972015731
     locked: 0

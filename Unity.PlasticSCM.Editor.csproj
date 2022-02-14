@@ -46,8 +46,8 @@
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\Avatar\ApplyCircleMask.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\GetRelativePath.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Developer\ProgressOperationHandler.cs" />
-     <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\GuiEnabled.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Views\PendingChanges\PendingMergeLinks\MergeLinkListViewItem.cs" />
+     <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\GuiEnabled.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Views\PendingChanges\PendingChangesViewMenu.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\Gluon\UpdateReport\UpdateReportDialog.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\PlasticSCM\UI\Tree\TableViewOperations.cs" />

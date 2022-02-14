@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveToTown : MonoBehaviour
 {
@@ -27,30 +28,42 @@ public class MoveToTown : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "ClEanSign")
+        if (!Manager.instance.isCleanTownFinish)
         {
-            ClEan.SetActive(true);
+            if (collision.gameObject.name == "ClEanSign")
+            {
+                ClEan.SetActive(true);
+            }
         }
-
-        if (collision.gameObject.name == "PESign")
+        
+        if (Manager.instance.isHealthTownFinish && !Manager.instance.isPEFinish)
         {
-            PE.SetActive(true);
+            if (collision.gameObject.name == "PESign")
+            {
+                PE.SetActive(true);
+            }
         }
-
-        if (collision.gameObject.name == "HEalthSign")
+        
+        if (Manager.instance.isCleanTownFinish && !Manager.instance.isHealthTownFinish)
         {
-            HEalth.SetActive(true);
+            if (collision.gameObject.name == "HEalthSign")
+            {
+                HEalth.SetActive(true);
+            }
         }
-
-        if (collision.gameObject.name == "PapErSign")
+        
+        if (Manager.instance.isPEFinish&& !Manager.instance.isPaperFinish)
         {
-            PapEr.SetActive(true);
+            if (collision.gameObject.name == "PapErSign")
+            {
+                PapEr.SetActive(true);
+            }
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "ClEanSign")
         {
@@ -71,27 +84,49 @@ public class MoveToTown : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "ClEanSign")
+        if (!Manager.instance.isCleanTownFinish)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (collision.gameObject.name == "ClEanSign")
             {
-                Debug.Log("CLEANE");
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneManager.LoadScene("CleanTown");
+                }
             }
         }
-
-        if (collision.gameObject.name == "PESign")
+        if (Manager.instance.isCleanTownFinish && !Manager.instance.isHealthTownFinish)
         {
-            PE.SetActive(false);
+            if (collision.gameObject.name == "HEalthSign")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneManager.LoadScene("HealthTown");
+                }
+            }
         }
-        if (collision.gameObject.name == "HEalthSign")
+        
+        if (Manager.instance.isHealthTownFinish && !Manager.instance.isPEFinish)
         {
-            HEalth.SetActive(false);
+            if (collision.gameObject.name == "PESign")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneManager.LoadScene("PETown");
+                }
+            }
         }
-        if (collision.gameObject.name == "PapErSign")
+        if (Manager.instance.isPEFinish && !Manager.instance.isPaperFinish)
         {
-            PapEr.SetActive(false);
+            if (collision.gameObject.name == "PapErSign")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneManager.LoadScene("PaperTown");
+                }
+            }
         }
+        
     }
 }

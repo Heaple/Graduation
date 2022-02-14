@@ -16,5 +16,6 @@ public class Variable
             return Instance;
         }
     }
-    public bool isClothChanged;
+    public bool isClothChanged = false;
+    public bool canMove = true;
 }

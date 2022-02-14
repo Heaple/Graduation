@@ -1,0 +1,1 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.TextMeshPro.Editor.csproj.CoreCompileInputs.cache

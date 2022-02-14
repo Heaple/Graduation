@@ -1,0 +1,2 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\PsdPlugin.csproj.AssemblyReference.cache
+C:\Dev\Projects\NewGraduation\obj\Debug\PsdPlugin.csproj.CoreCompileInputs.cache

@@ -1,0 +1,1 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.Mathematics.Editor.csproj.CoreCompileInputs.cache

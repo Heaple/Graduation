@@ -1,0 +1,2 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.2D.IK.Runtime.csproj.AssemblyReference.cache
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.2D.IK.Runtime.csproj.CoreCompileInputs.cache

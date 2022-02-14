@@ -1,0 +1,2 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.Mathematics.csproj.AssemblyReference.cache
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.Mathematics.csproj.CoreCompileInputs.cache

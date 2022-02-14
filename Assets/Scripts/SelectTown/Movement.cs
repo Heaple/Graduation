@@ -17,18 +17,41 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetResolution();
         Front = GameObject.Find("Front");
         Back = GameObject.Find("Back");
         Left = GameObject.Find("Left");
         Right = GameObject.Find("Right");
         CollisionTamji = GameObject.Find("ColllisionTamji");
-        nowObj = Front;
         CharacterList[0] = Front;
         CharacterList[1] = Back;
         CharacterList[2] = Left;
         CharacterList[3] = Right;
-        nowObj.transform.position = new Vector3(0.62f, -3.82f, 0);
-        ChangeCharacter(nowObj, nowObj);
+
+        if (Manager.instance.isPaperFinish)
+        {
+            nowObj = Left;
+            ChangeCharacter(nowObj, nowObj);
+            nowObj.transform.position = new Vector3(8.06f, -1.03f, 0);
+        } else if (Manager.instance.isPEFinish)
+        {
+            nowObj = Right;
+            ChangeCharacter(nowObj, nowObj);
+            nowObj.transform.position = new Vector3(-7.84f, 2.45f, 0);
+        } else if (Manager.instance.isHealthTownFinish)
+        {
+            nowObj = Left;
+            ChangeCharacter(nowObj, nowObj);
+            nowObj.transform.position = new Vector3(7.58f, 2.42f, 0);
+        } else if (Manager.instance.isCleanTownFinish)
+        {
+            nowObj = Right;
+            ChangeCharacter(nowObj, nowObj);
+            nowObj.transform.position = new Vector3(-8.12f, -0.96f);
+        } else {
+            nowObj = Front;
+            ChangeCharacter(nowObj, nowObj);
+        }
     }
 
     // Update is called once per frame
@@ -80,6 +103,28 @@ public class Movement : MonoBehaviour
             i.SetActive(false);
             i.transform.position = mainObj.transform.position;
 
+        }
+    }
+
+    public void SetResolution()
+    {
+        int setWidth = 1920;
+        int setHeight = 1080;
+
+        int deviceWidth = Screen.width;
+        int deviceHeight = Screen.height;
+        
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true);
+
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight)
+        {
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight);
+            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f);
+        }
+        else
+        {
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight);
+            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight);
         }
     }
 }

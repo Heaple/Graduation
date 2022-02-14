@@ -1,0 +1,1 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.2D.SpriteShape.Editor.csproj.CoreCompileInputs.cache

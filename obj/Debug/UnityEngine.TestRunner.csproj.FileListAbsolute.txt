@@ -1,0 +1,2 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\UnityEngine.TestRunner.csproj.AssemblyReference.cache
+C:\Dev\Projects\NewGraduation\obj\Debug\UnityEngine.TestRunner.csproj.CoreCompileInputs.cache

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class Starts : MonoBehaviour
 {
     int playerSpeed = 5;
+    public GameObject InfoCanvas;
     GameObject Front;
     GameObject Back;
     GameObject Left;
@@ -17,6 +18,7 @@ public class Starts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetResolution();
         Front = GameObject.Find("Front");
         Back = GameObject.Find("Back");
         Left = GameObject.Find("Left");
@@ -35,45 +37,56 @@ public class Starts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Variable.instance.canMove)
         {
-            ChangeCharacter(nowObj, Back);
-            nowObj = Back;
-            nowObj.transform.Translate(new Vector3(0, playerSpeed * Time.deltaTime, 0));
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            ChangeCharacter(nowObj, Front);
-            nowObj = Front;
-            nowObj.transform.Translate(new Vector3(0, -playerSpeed * Time.deltaTime, 0));
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            ChangeCharacter(nowObj, Left);
-            nowObj = Left;
-            nowObj.transform.Translate(new Vector3(-playerSpeed * Time.deltaTime, 0, 0));
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            ChangeCharacter(nowObj, Right);
-            nowObj = Right;
-            nowObj.transform.Translate(new Vector3(playerSpeed * Time.deltaTime, 0, 0));
-        }
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(nowObj.transform.position); //Ä³¸¯ÅÍÀÇ ¿ùµå ÁÂÇ¥¸¦ ºäÆ÷Æ® ÁÂÇ¥°è·Î º¯È¯ÇØÁØ´Ù.
-        viewPos.x = Mathf.Clamp01(viewPos.x); //x°ªÀ» 0ÀÌ»ó, 1ÀÌÇÏ·Î Á¦ÇÑÇÑ´Ù.
-        viewPos.y = Mathf.Clamp01(viewPos.y); //y°ªÀ» 0ÀÌ»ó, 1ÀÌÇÏ·Î Á¦ÇÑÇÑ´Ù.
-        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos); //´Ù½Ã ¿ùµå ÁÂÇ¥·Î º¯È¯ÇÑ´Ù.
-        nowObj.transform.position = worldPos; //ÁÂÇ¥¸¦ Àû¿ëÇÑ´Ù.
+            if (Input.GetKey(KeyCode.W))
+            {
+                ChangeCharacter(nowObj, Back);
+                nowObj = Back;
+                nowObj.transform.Translate(new Vector3(0, playerSpeed * Time.deltaTime, 0));
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                ChangeCharacter(nowObj, Front);
+                nowObj = Front;
+                nowObj.transform.Translate(new Vector3(0, -playerSpeed * Time.deltaTime, 0));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                ChangeCharacter(nowObj, Left);
+                nowObj = Left;
+                nowObj.transform.Translate(new Vector3(-playerSpeed * Time.deltaTime, 0, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                ChangeCharacter(nowObj, Right);
+                nowObj = Right;
+                nowObj.transform.Translate(new Vector3(playerSpeed * Time.deltaTime, 0, 0));
+            }
+            Vector3 viewPos = Camera.main.WorldToViewportPoint(nowObj.transform.position); //Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½Ø´ï¿½.
+            viewPos.x = Mathf.Clamp01(viewPos.x); //xï¿½ï¿½ï¿½ï¿½ 0ï¿½Ì»ï¿½, 1ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+            viewPos.y = Mathf.Clamp01(viewPos.y); //yï¿½ï¿½ï¿½ï¿½ 0ï¿½Ì»ï¿½, 1ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+            Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos); //ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
+            nowObj.transform.position = worldPos; //ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 
-        if (viewPos.y == 1f)
-        {
-            if (Variable.instance.isClothChanged)
+            if (viewPos.y == 1f)
             {
                 outsidE.SetActive(true);
                 if (Input.GetKey(KeyCode.E))
                 {
-                    SceneManager.LoadScene("SelectTown");
+                    if (!Variable.instance.isClothChanged)
+                    {
+                        InfoCanvas.SetActive(true);
+                        Variable.instance.canMove = false;
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("SelectTown");
+                    }
                 }
+            } else
+            {
+                outsidE.SetActive(false);
             }
         }
     }
@@ -94,5 +107,25 @@ public class Starts : MonoBehaviour
 
         }
     }
+    public void SetResolution()
+    {
+        int setWidth = 1920;
+        int setHeight = 1080;
 
+        int deviceWidth = Screen.width;
+        int deviceHeight = Screen.height;
+        
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true);
+
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight)
+        {
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight);
+            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f);
+        }
+        else
+        {
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight);
+            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight);
+        }
+    }
 }

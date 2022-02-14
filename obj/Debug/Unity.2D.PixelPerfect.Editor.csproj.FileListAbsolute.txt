@@ -1,0 +1,1 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.2D.PixelPerfect.Editor.csproj.CoreCompileInputs.cache

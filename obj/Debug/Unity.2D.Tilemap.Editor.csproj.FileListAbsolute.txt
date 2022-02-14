@@ -1,0 +1,1 @@
+C:\Dev\Projects\NewGraduation\obj\Debug\Unity.2D.Tilemap.Editor.csproj.CoreCompileInputs.cache
